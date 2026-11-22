@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Para Ti, Mi Amor ❤️ | De: Axel V</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Tipografías románticas y de alta legibilidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Dancing+Script:wght@600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FDF8F3',
+            parchment: '#FFFDF9',
+            blush: '#F6E1E4',
+            roseDeep: '#B85D6F',
+            terracotta: '#9E4757',
+            goldSoft: '#D4AF37',
+            goldWarm: '#C59B27',
+            charcoal: '#2E2527',
+            mutedText: '#6E5A5E'
+          },
+          fontFamily: {
+            serifTitle: ['"Cormorant Garamond"', 'serif'],
+            serifBody: ['"Lora"', 'serif'],
+            script: ['"Dancing Script"', 'cursive']
+          },
+          animation: {
+            'float-slow': 'floatSlow 5s ease-in-out infinite',
+            'pulse-soft': 'pulseSoft 2.8s ease-in-out infinite',
+            'fade-in-up': 'fadeInUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+          },
+          keyframes: {
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseSoft: {
+              '0%, 100%': { transform: 'scale(1)', boxShadow: '0 10px 30px -5px rgba(184, 93, 111, 0.35)' },
+              '50%': { transform: 'scale(1.03)', boxShadow: '0 16px 40px -4px rgba(184, 93, 111, 0.5)' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(22px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 20%, #FFF9F2 0%, #F9ECE8 55%, #F2DFE2 100%);
+      color: #2E2527;
+      font-family: 'Lora', serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Textura sutil de papel artesanal */
+    .paper-texture {
+      background-color: #FFFDF9;
+      background-image: 
+        radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 0),
+        radial-gradient(rgba(184, 93, 111, 0.05) 1px, transparent 0);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+    }
+
+    /* Sombra cálida de pergamino */
+    .letter-shadow {
+      box-shadow: 
+        0 20px 50px -12px rgba(92, 53, 60, 0.18),
+        0 4px 18px -4px rgba(212, 175, 55, 0.15),
+        inset 0 0 0 1px rgba(212, 175, 55, 0.32);
+    }
+
+    /* Sello de lacre */
+    .wax-seal {
+      background: radial-gradient(circle at 35% 30%, #D96B7E 0%, #B04356 65%, #842B3B 100%);
+      box-shadow: 
+        0 10px 25px rgba(132, 43, 59, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.35),
+        inset 0 -3px 6px rgba(68, 17, 26, 0.5);
+    }
+
+    /* Animación de la firma manuscrita */
+    .signature-path {
+      stroke-dasharray: 1200;
+      stroke-dashoffset: 1200;
+      transition: stroke-dashoffset 3.2s cubic-bezier(0.37, 0, 0.63, 1);
+    }
+    .signature-path.animate-draw {
+      stroke-dashoffset: 0;
+    }
+
+    /* Flores y mensajes flotantes al tocar pantalla */
+    .click-bloom {
+      position: fixed;
+      pointer-events: none;
+      z-index: 60;
+      animation: bloomRise 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes bloomRise {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.4) rotate(-15deg);
+      }
+      20% {
+        opacity: 1;
+        transform: translate(-50%, -70%) scale(1.05) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -175%) scale(0.95) rotate(12deg);
+      }
+    }
+
+    /* Barra de desplazamiento elegante */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FDF8F3;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #DFB5BC;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="relative selection:bg-roseDeep/20 selection:text-terracotta">
+
+  <!-- Canvas de fondo para pétalos, flores amarillas, rosas y destellos dorados -->
+  <canvas id="petalsCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+  <!-- Control flotante de música romántica (Superior derecha) -->
+  <div id="audioControlWrapper" class="fixed top-4 right-4 z-50 hidden">
+    <button id="musicToggleBtn" onclick="toggleMusic()" aria-label="Controlar música romántica"
+      class="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/85 backdrop-blur-md border border-goldSoft/40 shadow-md hover:shadow-lg transition-all duration-300 text-terracotta text-xs sm:text-sm font-medium">
+      <span id="musicEqualizer" class="flex items-end gap-0.5 h-3.5 w-4">
+        <span class="w-1 bg-roseDeep rounded-full animate-bounce" style="height: 60%; animation-duration: 0.9s;"></span>
+        <span class="w-1 bg-goldWarm rounded-full animate-bounce" style="height: 100%; animation-duration: 1.2s;"></span>
+        <span class="w-1 bg-roseDeep rounded-full animate-bounce" style="height: 75%; animation-duration: 0.75s;"></span>
+      </span>
+      <span id="musicStatusText">Melodía activa</span>
+    </button>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- PANTALLA 1: JARDÍN DE BIENVENIDA Y SOBRE INTERACTIVO LACRADO          -->
+  <!-- ===================================================================== -->
+  <section id="welcomeScreen" class="relative z-10 min-h-screen flex flex-col items-center justify-center px-5 py-10 text-center transition-all duration-700">
+    
+    <!-- Ramo floral superior decorativo en SVG -->
+    <div class="mb-4 animate-float-slow">
+      <svg class="w-28 h-20 sm:w-36 sm:h-24 mx-auto drop-shadow-sm" viewBox="0 0 180 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ramitas doradas y hojas suaves -->
+        <path d="M90 95C65 80 40 65 22 45" stroke="#8FA876" stroke-width="2" stroke-linecap="round"/>
+        <path d="M90 95C115 80 140 65 158 45" stroke="#8FA876" stroke-width="2" stroke-linecap="round"/>
+        <path d="M90 95V35" stroke="#7A9661" stroke-width="2.2" stroke-linecap="round"/>
+        <ellipse cx="52" cy="70" rx="11" ry="5" transform="rotate(-28 52 70)" fill="#A3BC89"/>
+        <ellipse cx="128" cy="70" rx="11" ry="5" transform="rotate(28 128 70)" fill="#A3BC89"/>
+        <!-- Flor amarilla izquierda -->
+        <g transform="translate(42, 46)">
+          <circle cx="0" cy="-9" r="7" fill="#F9D96C"/>
+          <circle cx="8" cy="-3" r="7" fill="#F7CE46"/>
+          <circle cx="5" cy="7" r="7" fill="#F9D96C"/>
+          <circle cx="-5" cy="7" r="7" fill="#F7CE46"/>
+          <circle cx="-8" cy="-3" r="7" fill="#F9D96C"/>
+          <circle cx="0" cy="0" r="4.5" fill="#C98A1C"/>
+        </g>
+        <!-- Flor amarilla derecha -->
+        <g transform="translate(138, 46)">
+          <circle cx="0" cy="-9" r="7" fill="#F9D96C"/>
+          <circle cx="8" cy="-3" r="7" fill="#F7CE46"/>
+          <circle cx="5" cy="7" r="7" fill="#F9D96C"/>
+          <circle cx="-5" cy="7" r="7" fill="#F7CE46"/>
+          <circle cx="-8" cy="-3" r="7" fill="#F9D96C"/>
+          <circle cx="0" cy="0" r="4.5" fill="#C98A1C"/>
+        </g>
+        <!-- Peonía rosa central -->
+        <g transform="translate(90, 36)">
+          <circle cx="0" cy="-12" r="11" fill="#F4B8C2"/>
+          <circle cx="11" cy="-4" r="11" fill="#EE9CA9"/>
+          <circle cx="7" cy="9" r="11" fill="#F4B8C2"/>
+          <circle cx="-7" cy="9" r="11" fill="#EE9CA9"/>
+          <circle cx="-11" cy="-4" r="11" fill="#F4B8C2"/>
+          <circle cx="0" cy="0" r="9" fill="#E37C8E"/>
+          <circle cx="0" cy="0" r="4" fill="#FBE4A2"/>
+        </g>
+      </svg>
+    </div>
+
+    <p class="uppercase tracking-[0.28em] text-xs sm:text-sm text-terracotta/80 font-medium mb-2">
+      Un detalle hecho con el alma
+    </p>
+
+    <h1 class="font-serifTitle text-4xl sm:text-6xl font-semibold text-charcoal leading-tight max-w-xl mb-3">
+      Para el amor de mi vida
+    </h1>
+
+    <p class="font-serifBody italic text-sm sm:text-base text-mutedText max-w-md mb-8 leading-relaxed">
+      “Llevo días y semanas guardando cada palabra en mi corazón para entregártelas hoy...”
+    </p>
+
+    <!-- Sobre Interactivo Lacrado -->
+    <div class="w-full max-w-md mx-auto">
+      <div onclick="openLetterExperience()" role="button" tabindex="0"
+        class="group relative cursor-pointer rounded-3xl paper-texture letter-shadow p-7 sm:p-9 transition-all duration-500 hover:-translate-y-1.5 border border-goldSoft/40">
+        
+        <!-- Líneas decorativas estilo sobre -->
+        <div class="absolute inset-3 rounded-2xl border border-dashed border-roseDeep/25 pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col items-center">
+          <span class="text-xs uppercase tracking-widest text-mutedText mb-1">Para:</span>
+          <p class="font-script text-3xl sm:text-4xl text-terracotta mb-5">Mi Mujer Hermosa ❤️</p>
+
+          <!-- Sello de lacre central -->
+          <div class="w-20 h-20 sm:w-22 sm:h-22 rounded-full wax-seal flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+            <svg class="w-9 h-9 text-ivory/95 drop-shadow" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+
+          <button type="button"
+            class="animate-pulse-soft inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-gradient-to-r from-terracotta via-roseDeep to-terracotta text-white font-medium text-sm sm:text-base shadow-lg transition-all duration-300">
+            <span>Abrir tu carta, mi amor</span>
+            <span class="text-lg">🌸❤️</span>
+          </button>
+
+          <p class="mt-4 text-[11px] sm:text-xs text-mutedText/80 flex items-center gap-1.5">
+            <span>✨ Sube un poquito el volumen para escuchar nuestra melodía</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- PANTALLA 2: EXPERIENCIA INTERACTIVA DE LECTURA DE LA CARTA           -->
+  <!-- ===================================================================== -->
+  <main id="letterScreen" class="relative z-10 hidden min-h-screen py-16 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-2xl mx-auto">
+
+      <!-- Encabezado y selector de modo de lectura -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-6 px-1">
+        <div class="text-center sm:text-left">
+          <span class="text-xs uppercase tracking-[0.22em] text-terracotta/80 font-semibold">Con todo mi corazón</span>
+          <h2 class="font-serifTitle text-2xl sm:text-3xl font-semibold text-charcoal">Cada palabra es para ti</h2>
+        </div>
+
+        <!-- Botón alternar entre Capítulo por Capítulo o Carta Completa -->
+        <div class="inline-flex rounded-full bg-white/80 backdrop-blur-sm p-1 border border-goldSoft/40 shadow-sm">
+          <button id="modePagedBtn" onclick="setReadingMode('paged')"
+            class="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 bg-roseDeep text-white shadow-sm">
+            Página por página
+          </button>
+          <button id="modeFullBtn" onclick="setReadingMode('full')"
+            class="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 text-mutedText hover:text-terracotta">
+            Carta completa
+          </button>
+        </div>
+      </div>
+
+      <!-- Indicador de progreso (solo en modo página por página) -->
+      <div id="progressContainer" class="mb-5 px-1">
+        <div class="flex items-center justify-between text-xs text-mutedText mb-1.5">
+          <span id="chapterLabel" class="font-medium text-terracotta">Prólogo • 1 de 6</span>
+          <span id="progressPercent">17%</span>
+        </div>
+        <div class="w-full h-1.5 bg-roseDeep/15 rounded-full overflow-hidden">
+          <div id="progressBar" class="h-full bg-gradient-to-r from-goldSoft via-roseDeep to-terracotta rounded-full transition-all duration-500" style="width: 17%"></div>
+        </div>
+      </div>
+
+      <!-- TARJETA PERGAMINO PRINCIPAL CON MARCOS FLORALES EN LAS 4 ESQUINAS -->
+      <article id="parchmentCard" class="relative rounded-3xl paper-texture letter-shadow px-6 py-10 sm:px-12 sm:py-14 border border-goldSoft/45 overflow-hidden">
+
+        <!-- Esquina Floral Superior Izquierda -->
+        <svg class="absolute top-0 left-0 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none opacity-90" viewBox="0 0 140 140" fill="none">
+          <path d="M8 125C12 75 42 28 122 10" stroke="#8FA876" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M22 92C45 86 60 72 68 54" stroke="#8FA876" stroke-width="1.4" stroke-linecap="round"/>
+          <ellipse cx="46" cy="48" rx="10" ry="4.5" transform="rotate(-38 46 48)" fill="#A7C08E"/>
+          <ellipse cx="78" cy="24" rx="10" ry="4.5" transform="rotate(-15 78 24)" fill="#A7C08E"/>
+          <ellipse cx="22" cy="76" rx="9" ry="4" transform="rotate(-65 22 76)" fill="#A7C08E"/>
+          <!-- Rosa suave -->
+          <g transform="translate(34, 34)">
+            <circle cx="0" cy="-9" r="8" fill="#F5BDC6"/>
+            <circle cx="8" cy="-3" r="8" fill="#EE9CA9"/>
+            <circle cx="5" cy="7" r="8" fill="#F5BDC6"/>
+            <circle cx="-5" cy="7" r="8" fill="#EE9CA9"/>
+            <circle cx="-8" cy="-3" r="8" fill="#F5BDC6"/>
+            <circle cx="0" cy="0" r="6" fill="#DF7A8C"/>
+            <circle cx="0" cy="0" r="2.8" fill="#FBE4A2"/>
+          </g>
+          <!-- Flor amarilla pequeña -->
+          <g transform="translate(66, 20)">
+            <circle cx="0" cy="-5.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="5" cy="-1.5" r="4.5" fill="#F6CA3E"/>
+            <circle cx="3" cy="4.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="-3" cy="4.5" r="4.5" fill="#F6CA3E"/>
+            <circle cx="-5" cy="-1.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="0" cy="0" r="2.5" fill="#C48318"/>
+          </g>
+          <!-- Flor amarilla inferior -->
+          <g transform="translate(18, 62)">
+            <circle cx="0" cy="-5.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="5" cy="-1.5" r="4.5" fill="#F6CA3E"/>
+            <circle cx="3" cy="4.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="-3" cy="4.5" r="4.5" fill="#F6CA3E"/>
+            <circle cx="-5" cy="-1.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="0" cy="0" r="2.5" fill="#C48318"/>
+          </g>
+        </svg>
+
+        <!-- Esquina Floral Superior Derecha -->
+        <svg class="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none opacity-90 transform scale-x-[-1]" viewBox="0 0 140 140" fill="none">
+          <path d="M8 125C12 75 42 28 122 10" stroke="#8FA876" stroke-width="1.8" stroke-linecap="round"/>
+          <ellipse cx="46" cy="48" rx="10" ry="4.5" transform="rotate(-38 46 48)" fill="#A7C08E"/>
+          <ellipse cx="78" cy="24" rx="10" ry="4.5" transform="rotate(-15 78 24)" fill="#A7C08E"/>
+          <g transform="translate(34, 34)">
+            <circle cx="0" cy="-9" r="8" fill="#F5BDC6"/>
+            <circle cx="8" cy="-3" r="8" fill="#EE9CA9"/>
+            <circle cx="5" cy="7" r="8" fill="#F5BDC6"/>
+            <circle cx="-5" cy="7" r="8" fill="#EE9CA9"/>
+            <circle cx="-8" cy="-3" r="8" fill="#F5BDC6"/>
+            <circle cx="0" cy="0" r="6" fill="#DF7A8C"/>
+            <circle cx="0" cy="0" r="2.8" fill="#FBE4A2"/>
+          </g>
+          <g transform="translate(66, 20)">
+            <circle cx="0" cy="-5.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="5" cy="-1.5" r="4.5" fill="#F6CA3E"/>
+            <circle cx="3" cy="4.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="-3" cy="4.5" r="4.5" fill="#F6CA3E"/>
+            <circle cx="-5" cy="-1.5" r="4.5" fill="#F9D96C"/>
+            <circle cx="0" cy="0" r="2.5" fill="#C48318"/>
+          </g>
+        </svg>
+
+        <!-- Esquina Floral Inferior Izquierda -->
+        <svg class="absolute bottom-0 left-0 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none opacity-85 transform scale-y-[-1]" viewBox="0 0 140 140" fill="none">
+          <path d="M8 125C12 75 42 28 122 10" stroke="#8FA876" stroke-width="1.8" stroke-linecap="round"/>
+          <ellipse cx="46" cy="48" rx="10" ry="4.5" transform="rotate(-38 46 48)" fill="#A7C08E"/>
+          <g transform="translate(34, 34)">
+            <circle cx="0" cy="-8" r="7.5" fill="#F9D96C"/>
+            <circle cx="7.5" cy="-2.5" r="7.5" fill="#F6CA3E"/>
+            <circle cx="4.5" cy="6.5" r="7.5" fill="#F9D96C"/>
+            <circle cx="-4.5" cy="6.5" r="7.5" fill="#F6CA3E"/>
+            <circle cx="-7.5" cy="-2.5" r="7.5" fill="#F9D96C"/>
+            <circle cx="0" cy="0" r="3.5" fill="#C48318"/>
+          </g>
+        </svg>
+
+        <!-- Esquina Floral Inferior Derecha -->
+        <svg class="absolute bottom-0 right-0 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none opacity-85 transform scale-[-1]" viewBox="0 0 140 140" fill="none">
+          <path d="M8 125C12 75 42 28 122 10" stroke="#8FA876" stroke-width="1.8" stroke-linecap="round"/>
+          <ellipse cx="46" cy="48" rx="10" ry="4.5" transform="rotate(-38 46 48)" fill="#A7C08E"/>
+          <g transform="translate(34, 34)">
+            <circle cx="0" cy="-8" r="7.5" fill="#F5BDC6"/>
+            <circle cx="7.5" cy="-2.5" r="7.5" fill="#EE9CA9"/>
+            <circle cx="4.5" cy="6.5" r="7.5" fill="#F5BDC6"/>
+            <circle cx="-4.5" cy="6.5" r="7.5" fill="#EE9CA9"/>
+            <circle cx="-7.5" cy="-2.5" r="7.5" fill="#F5BDC6"/>
+            <circle cx="0" cy="0" r="4" fill="#DF7A8C"/>
+          </g>
+        </svg>
+
+        <!-- Contenido dinámico de la carta -->
+        <div id="letterContentArea" class="relative z-10 min-h-[300px] flex flex-col justify-between">
+          <!-- Se rellena mediante JavaScript con animación suave -->
+        </div>
+
+      </article>
+
+      <!-- Controles de Navegación (Modo Página por Página) -->
+      <div id="pagedNavControls" class="mt-6 flex items-center justify-between gap-3">
+        <button id="prevChapterBtn" onclick="changeChapter(-1)"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/85 hover:bg-white text-mutedText hover:text-terracotta border border-goldSoft/40 shadow-sm transition-all duration-300 text-sm font-medium disabled:opacity-40 disabled:pointer-events-none">
+          <span>← Anterior</span>
+        </button>
+
+        <button id="nextChapterBtn" onclick="changeChapter(1)"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-terracotta to-roseDeep hover:brightness-105 text-white shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base font-medium">
+          <span id="nextBtnText">Siguiente página 🌸</span>
+        </button>
+      </div>
+
+      <!-- Barra de Interacción Romántica Inferior -->
+      <div class="mt-8 pt-6 border-t border-roseDeep/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <p class="text-xs sm:text-sm text-mutedText">
+          ✨ Tip: Toca cualquier parte de la pantalla para hacer florecer corazones y flores
+        </p>
+
+        <button onclick="triggerLoveShower()"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blush/80 hover:bg-blush text-terracotta border border-roseDeep/30 shadow-sm hover:shadow transition-all duration-300 text-xs sm:text-sm font-semibold active:scale-95">
+          <span>💐 Enviar un abrazo / Lluvia de flores</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    // =========================================================================
+    // 1. CONTENIDO EXACTO DE LA CARTA DIVIDIDO EN CAPÍTULOS INTERACTIVOS
+    // =========================================================================
+    const chapters = [
+      {
+        badge: "Prólogo",
+        title: "Para ti, desde hace semanas...",
+        paragraphs: [
+          "Hola mi amor, este detalle te lo llevo escribiendo desde hace días, y semanas, planeando este pequeño detalle, y quise hacerlo cuando los problemas estén muy fuertes o estemos mal en algún momento, pero quería decirte lo siguiente:"
+        ]
+      },
+      {
+        badge: "Capítulo I",
+        title: "Nuestras almas destinadas",
+        paragraphs: [
+          "Mi amor, lo nuestro es algo que amo con toda el alma, la conexión que tú y yo tenemos es única, sentir tanto en tan poco tiempo es señal de que debíamos estar desde hace mucho tiempo juntos, pero lamentablemente la vida nos juntó apenas, nuestras almas estaban destinadas a estar juntas, eso para mí lo es todo, esta versión que conoces de mí a nadie se la he dado, a nadie, y es por ello que cuido tanto lo nuestro de cada situación, por eso soy tan exigente y cuidadoso, porque quiero que esto dure años, que tu amor me siga viendo a mí, que solo sea yo para ti porque para mí eres:"
+        ]
+      },
+      {
+        badge: "Capítulo II",
+        title: "Hasta que la muerte nos separe",
+        paragraphs: [
+          "Cuando te conocí me enamoré de tu sonrisa, de tus ojos y de tu persona, conforme el paso de los días y las horas te fuiste volviendo más linda y hermosa conmigo, eres el amor de mi vida, el cómo me tratas, me besas, me ves, me quieres y me extrañas es la forma más hermosa que existe de sentir el amor. Sí tengo miedo de muchas cosas, como el que me cambies o me estés viendo la cara por lo que ha pasado, pero fuera de eso, tu amor es lo más hermoso que existe, tú eres lo más hermoso que existe en este mundo y sí te mereces un amor hermoso y yo te lo daré, un amor donde sientas que eres la única persona del mundo y la persona que amo sobre todas las cosas y sobre todo el mundo. Quiero en algún momento decirte “hasta que la muerte nos separe”, quiero que esa frase se haga realidad, porque contigo me quiero quedar toda la vida; tu cuerpo, tu carita, tu amor y todo, es lo que hace que yo necesite de ti todos los días, ya no me puedo separar de ti. Tú, mi querida mujer hermosa, eres tú por la que amo con tan intenso amor, no me da miedo la intensidad si se habla de ti, te amo, te amo más de lo que estas palabras puedan expresar."
+        ]
+      },
+      {
+        badge: "Capítulo III",
+        title: "Tu lugar seguro",
+        paragraphs: [
+          "Todos los días me la paso pensando en ti y deseando estar a tu lado, poder abrazarte y besarte, decirte lo mucho que te amo viéndote a los ojos, hacerte sentir que soy tu lugar seguro, entre otras cosas. Sé que hemos pasado por mal entendidos y por cosas de tu pasado que están afectando todo esto, porque sí lo hace, pero fuera de eso sé que esto es hermoso y lindo, cada que estamos juntos se siente tan bien; solo te pido que no me dejes de amar porque yo no lo haré, eres todo para mí, y sacaste una de mis versiones más lindas y hermosas, que solo quiero entregártela a ti mi amor, eres lo mejor del mundo y quiero cumplir tantas cosas contigo que tenemos muchas cosas que hacer mi amor, te amo y eres lo mejor que me ha pasado en la vida, eres todo para mí ❤️"
+        ]
+      },
+      {
+        badge: "Capítulo IV",
+        title: "Mi galaxia, mis estrellas y mi cielo",
+        paragraphs: [
+          "Solo te pido respeto y sobre todo que pienses en mí, yo te respeto hasta con la mirada y la boca, hasta en los pensamientos, jamás lastimaría tu ser tan hermoso, tu persona y sobre todo jamás dejaría que fueras la burla de alguien más. Eres todo lo que necesito y mi mundo solo eres tú, eres mi galaxia, mis estrellas, mi cielo y todo lo que conlleva hermosura, eres mi mayor prioridad y siempre lo serás, te amo y jamás quiero perderte, eres el amor de mi vida 🥺"
+        ]
+      },
+      {
+        badge: "Para Siempre",
+        title: "Mi promesa eterna para ti",
+        isFinal: true,
+        paragraphs: [
+          "Y si algún día los días se vuelven grises o las dudas intentan tocar nuestra puerta, vuelve a leer estas líneas y recuerda que aquí tienes un corazón que eligió quedarse contigo incluso en medio de cualquier tormenta. No busco perfección, te busco a ti: con tu historia, con tu risa, con tus miedos y con tu luz. Porque de todas las vidas que pude haber vivido, mi mayor suerte fue coincidir contigo en esta. Pase lo que pase, mi mano siempre va a estar extendida para sostener la tuya."
+        ]
+      }
+    ];
+
+    let currentChapter = 0;
+    let readingMode = 'paged'; // 'paged' | 'full'
+
+    // =========================================================================
+    // 2. FIRMA CALIGRÁFICA EN SVG EXACTO DE LA IMAGEN PROPORCIONADA (AXEL V)
+    // =========================================================================
+    function getSignatureBlockHTML() {
+      return `
+        <div class="mt-10 pt-8 border-t border-goldSoft/30 flex flex-col items-center text-center animate-fade-in-up">
+          <p class="font-script text-3xl sm:text-4xl text-terracotta mb-1">Te amo</p>
+          <p class="font-serifTitle italic text-lg sm:text-xl text-charcoal font-semibold tracking-wide mb-3">
+            De: Axel V
+          </p>
+
+          <!-- Firma manuscrita animada fiel al trazo original -->
+          <div class="relative w-56 h-44 sm:w-64 sm:h-48 flex items-center justify-center">
+            <svg id="axelSignatureSvg" class="w-full h-full overflow-visible" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Trazo principal continuo fiel a la imagen:
+                   1) Diagonal larga ascendente desde abajo izquierda hacia arriba derecha
+                   2) Lazada vertical alta y estrecha en el lado izquierdo que baja en ángulo agudo con colita curva
+                   3) Segunda diagonal paralela hacia arriba derecha con pequeño bucle central -->
+              <path id="sigPath1" class="signature-path"
+                d="M 58 192 L 194 32"
+                stroke="#231D1E" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="sigPath2" class="signature-path"
+                d="M 88 182 C 84 128 76 74 79 62 C 81 56 86 64 90 88 C 96 124 106 164 122 170 C 130 173 136 168 136 161"
+                stroke="#231D1E" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+              <path id="sigPath3" class="signature-path"
+                d="M 86 184 C 94 186 112 162 128 138 C 138 122 146 105 144 103 C 141 101 131 114 125 123 C 122 128 134 114 158 88 L 204 62"
+                stroke="#231D1E" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span class="text-[11px] uppercase tracking-[0.25em] text-mutedText/70 mt-1">Con todo mi amor, siempre tuyo</span>
+        </div>
+      `;
+    }
+
+    function animateSignatureDrawing() {
+      const paths = document.querySelectorAll('.signature-path');
+      paths.forEach((p, idx) => {
+        p.classList.remove('animate-draw');
+        // Forzar reflow para reiniciar animación si vuelve a entrar
+        void p.getBoundingClientRect();
+        setTimeout(() => {
+          p.classList.add('animate-draw');
+        }, 250 + idx * 550);
+      });
+    }
+
+    // =========================================================================
+    // 3. RENDERIZADO DE CAPÍTULOS Y MODO LECTURA COMPLETA
+    // =========================================================================
+    function renderLetter() {
+      const container = document.getElementById('letterContentArea');
+      const progressContainer = document.getElementById('progressContainer');
+      const pagedNavControls = document.getElementById('pagedNavControls');
+
+      if (readingMode === 'paged') {
+        progressContainer.classList.remove('hidden');
+        pagedNavControls.classList.remove('hidden');
+
+        const ch = chapters[currentChapter];
+        const total = chapters.length;
+        const pct = Math.round(((currentChapter + 1) / total) * 100);
+
+        document.getElementById('chapterLabel').textContent = `${ch.badge} • ${currentChapter + 1} de ${total}`;
+        document.getElementById('progressPercent').textContent = `${pct}%`;
+        document.getElementById('progressBar').style.width = `${pct}%`;
+
+        const prevBtn = document.getElementById('prevChapterBtn');
+        const nextBtn = document.getElementById('nextChapterBtn');
+        const nextBtnText = document.getElementById('nextBtnText');
+
+        prevBtn.disabled = currentChapter === 0;
+
+        if (currentChapter === total - 1) {
+          nextBtnText.textContent = "Lluvia de amor 💐❤️";
+        } else {
+          nextBtnText.textContent = "Siguiente página 🌸";
+        }
+
+        let html = `
+          <div class="animate-fade-in-up">
+            <div class="text-center mb-6">
+              <span class="inline-block px-3.5 py-1 rounded-full bg-blush/70 text-terracotta text-xs uppercase tracking-[0.2em] font-semibold mb-2">
+                ${ch.badge}
+              </span>
+              <h3 class="font-serifTitle text-2xl sm:text-3xl font-semibold text-charcoal">
+                ${ch.title}
+              </h3>
+              <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-goldSoft to-transparent mx-auto mt-3"></div>
+            </div>
+
+            <div class="space-y-5 text-base sm:text-[17.5px] leading-[1.9] text-charcoal/95 text-justify sm:text-left">
+              ${ch.paragraphs.map(p => `<p class="${ch.isFinal ? 'italic font-medium text-terracotta/95 bg-blush/35 p-5 rounded-2xl border border-roseDeep/20' : ''}">${p}</p>`).join('')}
+            </div>
+
+            ${ch.isFinal ? getSignatureBlockHTML() : ''}
+          </div>
+        `;
+
+        container.innerHTML = html;
+
+        if (ch.isFinal) {
+          animateSignatureDrawing();
+          setTimeout(() => triggerLoveShower(14), 600);
+        }
+      } else {
+        // Modo Carta Completa en una sola vista continua
+        progressContainer.classList.add('hidden');
+        pagedNavControls.classList.add('hidden');
+
+        let fullHtml = `<div class="space-y-8 animate-fade-in-up">`;
+        chapters.forEach((ch, idx) => {
+          fullHtml += `
+            <div class="${idx > 0 ? 'pt-6 border-t border-roseDeep/10' : ''}">
+              <div class="mb-3">
+                <span class="text-[11px] uppercase tracking-[0.22em] text-terracotta/80 font-semibold">${ch.badge}</span>
+                <h3 class="font-serifTitle text-2xl font-semibold text-charcoal">${ch.title}</h3>
+              </div>
+              <div class="space-y-4 text-base sm:text-[17px] leading-[1.9] text-charcoal/95">
+                ${ch.paragraphs.map(p => `<p class="${ch.isFinal ? 'italic font-medium text-terracotta/95 bg-blush/35 p-5 rounded-2xl border border-roseDeep/20' : ''}">${p}</p>`).join('')}
+              </div>
+            </div>
+          `;
+        });
+        fullHtml += getSignatureBlockHTML();
+        fullHtml += `</div>`;
+
+        container.innerHTML = fullHtml;
+        animateSignatureDrawing();
+      }
+    }
+
+    function changeChapter(delta) {
+      const nextIndex = currentChapter + delta;
+      if (nextIndex >= chapters.length) {
+        triggerLoveShower(22);
+        return;
+      }
+      if (nextIndex >= 0 && nextIndex < chapters.length) {
+        currentChapter = nextIndex;
+        renderLetter();
+        document.getElementById('parchmentCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function setReadingMode(mode) {
+      readingMode = mode;
+      const pagedBtn = document.getElementById('modePagedBtn');
+      const fullBtn = document.getElementById('modeFullBtn');
+
+      if (mode === 'paged') {
+        pagedBtn.className = "px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 bg-roseDeep text-white shadow-sm";
+        fullBtn.className = "px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 text-mutedText hover:text-terracotta";
+      } else {
+        fullBtn.className = "px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 bg-roseDeep text-white shadow-sm";
+        pagedBtn.className = "px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 text-mutedText hover:text-terracotta";
+      }
+      renderLetter();
+    }
+
+    function openLetterExperience() {
+      startRomanticMusic();
+
+      const welcome = document.getElementById('welcomeScreen');
+      const letter = document.getElementById('letterScreen');
+      const audioCtrl = document.getElementById('audioControlWrapper');
+
+      welcome.style.opacity = '0';
+      welcome.style.transform = 'scale(0.96)';
+
+      setTimeout(() => {
+        welcome.classList.add('hidden');
+        letter.classList.remove('hidden');
+        audioCtrl.classList.remove('hidden');
+        renderLetter();
+        triggerLoveShower(16);
+      }, 500);
+    }
+
+    // =========================================================================
+    // 4. MÚSICA ROMÁNTICA SINTETIZADA EN EL NAVEGADOR (WEB AUDIO API)
+    //    Melodía suave tipo piano/arpa cálida y etérea sin enlaces externos
+    // =========================================================================
+    let audioCtx = null;
+    let isMusicPlaying = false;
+    let musicInterval = null;
+    let masterGain = null;
+
+    // Progresión romántica cálida (Fmaj7 - C/E - Dm7 - Bbmaj7 - Csus4 - C)
+    const romanticSequence = [
+      // Compás 1: Fmaj7 (Fa - La - Do - Mi)
+      { notes: [174.61, 220.00, 261.63, 329.63, 523.25], duration: 2.8 },
+      // Compás 2: C/E (Mi - Sol - Do - Sol5)
+      { notes: [164.81, 196.00, 261.63, 392.00, 493.88], duration: 2.8 },
+      // Compás 3: Dm7 (Re - Fa - La - Do - Fa5)
+      { notes: [146.83, 174.61, 220.00, 261.63, 349.23], duration: 2.8 },
+      // Compás 4: Bbmaj7 -> C (Sib - Re - Fa - La -> Do - Mi - Sol)
+      { notes: [116.54, 174.61, 220.00, 293.66, 329.63], duration: 2.8 }
+    ];
+    let seqStep = 0;
+
+    function playSoftPianoNote(freq, startTime, duration, volume = 0.08) {
+      if (!audioCtx || !masterGain) return;
+
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const noteGain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+
+      // Timbre cálido mezclado (onda sinusoidal + triangular suave)
+      osc1.type = 'sine';
+      osc2.type = 'triangle';
+      osc1.frequency.setValueAtTime(freq, startTime);
+      osc2.frequency.setValueAtTime(freq * 1.0015, startTime); // Ligero desafinado cálido
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(950, startTime);
+      filter.frequency.exponentialRampToValueAtTime(320, startTime + duration);
+
+      noteGain.gain.setValueAtTime(0.0001, startTime);
+      noteGain.gain.linearRampToValueAtTime(volume, startTime + 0.14);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration + 1.1);
+
+      osc1.connect(filter);
+      osc2.connect(filter);
+      filter.connect(noteGain);
+      noteGain.connect(masterGain);
+
+      osc1.start(startTime);
+      osc2.start(startTime);
+      osc1.stop(startTime + duration + 1.2);
+      osc2.stop(startTime + duration + 1.2);
+    }
+
+    function scheduleArpeggioMeasure() {
+      if (!isMusicPlaying || !audioCtx) return;
+
+      const chord = romanticSequence[seqStep % romanticSequence.length];
+      const now = audioCtx.currentTime;
+
+      // Arpegio delicado tipo arpa/piano romántico
+      chord.notes.forEach((freq, i) => {
+        const noteTime = now + i * 0.42;
+        const vol = i === 0 ? 0.09 : (i === chord.notes.length - 1 ? 0.075 : 0.06);
+        playSoftPianoNote(freq, noteTime, 2.4, vol);
+      });
+
+      seqStep++;
+    }
+
+    function startRomanticMusic() {
+      try {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContextClass();
+          masterGain = audioCtx.createGain();
+          masterGain.gain.setValueAtTime(0.75, audioCtx.currentTime);
+          masterGain.connect(audioCtx.destination);
+        }
+
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        if (!isMusicPlaying) {
+          isMusicPlaying = true;
+          scheduleArpeggioMeasure();
+          musicInterval = setInterval(scheduleArpeggioMeasure, 2750);
+          updateMusicButtonUI();
+        }
+      } catch (e) {
+        console.warn("Audio no disponible en este navegador:", e);
+      }
+    }
+
+    function toggleMusic() {
+      if (!audioCtx) {
+        startRomanticMusic();
+        return;
+      }
+
+      if (isMusicPlaying) {
+        isMusicPlaying = false;
+        clearInterval(musicInterval);
+        if (audioCtx.state === 'running') {
+          audioCtx.suspend();
+        }
+      } else {
+        isMusicPlaying = true;
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        scheduleArpeggioMeasure();
+        musicInterval = setInterval(scheduleArpeggioMeasure, 2750);
+      }
+      updateMusicButtonUI();
+    }
+
+    function updateMusicButtonUI() {
+      const statusText = document.getElementById('musicStatusText');
+      const eq = document.getElementById('musicEqualizer');
+      if (isMusicPlaying) {
+        statusText.textContent = "Melodía activa";
+        eq.classList.remove('opacity-40');
+      } else {
+        statusText.textContent = "Pausada";
+        eq.classList.add('opacity-40');
+      }
+    }
+
+    // =========================================================================
+    // 5. INTERACCIONES ROMÁNTICAS: FLORES AL TOCAR Y LLUVIA DE CARIÑO
+    // =========================================================================
+    const loveNotes = [
+      "Eres mi lugar seguro ❤️",
+      "Mi galaxia entera ✨",
+      "Hasta que la muerte nos separe 💍",
+      "Solo tú, mi amor 🌸",
+      "Eres lo mejor de mi vida 💛",
+      "Te amo con toda el alma 🥺"
+    ];
+
+    const flowerEmojis = ["🌸", "🌼", "💛", "🌺", "✨", "❤️", "🌷"];
+
+    function spawnFloatingBloom(x, y, includeText = false) {
+      const el = document.createElement('div');
+      el.className = 'click-bloom flex flex-col items-center';
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+
+      const emoji = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+
+      if (includeText) {
+        const msg = loveNotes[Math.floor(Math.random() * loveNotes.length)];
+        el.innerHTML = `
+          <span class="text-2xl sm:text-3xl drop-shadow-sm">${emoji}</span>
+          <span class="mt-1 px-3 py-1 rounded-full bg-white/95 border border-goldSoft/50 text-terracotta text-xs sm:text-sm font-medium shadow-md whitespace-nowrap">
+            ${msg}
+          </span>
+        `;
+      } else {
+        el.innerHTML = `<span class="text-xl sm:text-2xl drop-shadow-sm">${emoji}</span>`;
+      }
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 2200);
+    }
+
+    // Al tocar/hacer clic en cualquier parte de la pantalla florecen flores/corazones
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('button')) return;
+      spawnFloatingBloom(e.clientX, e.clientY, false);
+    });
+
+    // Botón "Enviar un abrazo / Lluvia de flores"
+    function triggerLoveShower(count = 18) {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const rx = Math.random() * (w * 0.82) + w * 0.09;
+          const ry = Math.random() * (h * 0.65) + h * 0.2;
+          const showMsg = i % 4 === 0;
+          spawnFloatingBloom(rx, ry, showMsg);
+        }, i * 110);
+      }
+    }
+
+    // =========================================================================
+    // 6. FONDO ANIMADO EN CANVAS: PÉTALOS, FLORES AMARILLAS, ROSAS Y DESTELLOS
+    // =========================================================================
+    const canvas = document.getElementById('petalsCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class BotanicalParticle {
+      constructor() {
+        this.reset(true);
+      }
+
+      reset(initial = false) {
+        this.x = Math.random() * canvas.width;
+        this.y = initial ? Math.random() * canvas.height : -25;
+        this.size = Math.random() * 7 + 5;
+        this.speedY = Math.random() * 0.85 + 0.35;
+        this.speedX = (Math.random() - 0.5) * 0.6;
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = (Math.random() - 0.5) * 0.025;
+        this.swayOffset = Math.random() * 100;
+        // Tipos: 'rosePetal', 'yellowFlower', 'goldSparkle'
+        const r = Math.random();
+        if (r < 0.48) this.type = 'rosePetal';
+        else if (r < 0.82) this.type = 'yellowFlower';
+        else this.type = 'goldSparkle';
+      }
+
+      update(tick) {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin((tick + this.swayOffset) * 0.015) * 0.45;
+        this.angle += this.spin;
+
+        if (this.y > canvas.height + 30) {
+          this.reset(false);
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+
+        if (this.type === 'rosePetal') {
+          // Pétalo de rosa suave / peonía
+          ctx.beginPath();
+          ctx.moveTo(0, -this.size);
+          ctx.bezierCurveTo(this.size, -this.size * 0.5, this.size * 0.8, this.size, 0, this.size);
+          ctx.bezierCurveTo(-this.size * 0.8, this.size, -this.size, -this.size * 0.5, 0, -this.size);
+          ctx.fillStyle = 'rgba(235, 152, 168, 0.45)';
+          ctx.fill();
+        } else if (this.type === 'yellowFlower') {
+          // Florecita amarilla de 5 pétalos (porque le encantan las flores)
+          const petalR = this.size * 0.48;
+          ctx.fillStyle = 'rgba(247, 206, 70, 0.58)';
+          for (let i = 0; i < 5; i++) {
+            const a = (i * Math.PI * 2) / 5;
+            ctx.beginPath();
+            ctx.arc(Math.cos(a) * petalR, Math.sin(a) * petalR, petalR * 0.78, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.beginPath();
+          ctx.arc(0, 0, petalR * 0.45, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(198, 134, 24, 0.65)';
+          ctx.fill();
+        } else {
+          // Destello dorado suave
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size * 0.28, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(212, 175, 55, 0.55)';
+          ctx.fill();
+        }
+
+        ctx.restore();
+      }
+    }
+
+    function initParticles() {
+      const count = window.innerWidth < 640 ? 28 : 45;
+      particles = Array.from({ length: count }, () => new BotanicalParticle());
+    }
+
+    let tickCount = 0;
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      tickCount++;
+      for (const p of particles) {
+        p.update(tickCount);
+        p.draw();
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    window.onload = function () {
+      initParticles();
+      animateParticles();
+    };
+  </script>
+</body>
+</html>
